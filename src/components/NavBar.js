@@ -40,21 +40,15 @@ const menuItems =[{
 ]
 
 function NavBar() {
-  const [open, setOpen] = useState(false);
-
-  // const classes = useStyles();
   const[state, setState]=useState({
     right:false
   })
   const toogleSlider=((slider,open) => () => {
     setState({... state, [slider]:open})
-
   });
-
   const slideList = slider =>(
     <StyledBox   component="div"
     onClick={toogleSlider(slider,false)}
-
     >
       <StyledAvatar src={logo} alt='logo'/>
       <Divider/>
@@ -67,8 +61,7 @@ function NavBar() {
           <ListItemText primary={Isitem.listText} />
         </ListItemIcon>
       </Button>
-    </ListItem>
-    
+    </ListItem> 
     
      ))}
 

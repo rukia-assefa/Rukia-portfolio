@@ -1,61 +1,58 @@
-import React from 'react'
-import { Avatar,Box,Grid,Typography } from '@mui/material';
-import logo from "../assets/img/logo.png"
-import Typed from "react-typed"
+import React, { useState, useEffect } from 'react';
+import { Avatar, Box, Grid, Typography } from '@mui/material';
+import logo from '../assets/img/logo.png';
 import { styled } from 'styled-components';
+
 const StyledTypography1 = styled(Typography)`
   color: tomato;
- 
 `;
+
 const StyledAvatar = styled(Avatar)`
-  width: 100px; /* Adjust width as needed */
-  height: 100px; /* Adjust height as needed */
-  margin:50px;
+  width: 100px;
+  height: 100px;
+  margin: 50px;
 `;
-const StyledTypography2 =styled(Typography)`
+
+const StyledTypography2 = styled(Typography)`
   color: tan;
-  marginBottom:3rem;
+  margin-bottom: 3rem;
 `;
+
 const StyledBox = styled(Box)`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Adjust position to center */
+  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1;
 `;
 
-
 function Header() {
+  const [typedText, setTypedText] = useState('');
+  const textArray = ['Web Design', 'Web Developer', 'MERN Stack'];
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTypedText(textArray[currentTextIndex]);
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [currentTextIndex]);
+
   return (
-<>
-<StyledBox>
-    <Grid container justify="center" >
-        <StyledAvatar src={logo} alt='logo'/>
+    <>
+      <StyledBox>
+        <Grid container justify="center">
+          <StyledAvatar src={logo} alt="logo" />
+        </Grid>
+        <StyledTypography1 variant="h4">{/* Your name or title */}</StyledTypography1>
+        <br />
+        <StyledTypography2 variant="h5">{typedText}</StyledTypography2>
+      </StyledBox>
+    </>
+  );
+}
 
-    </Grid>
-<StyledTypography1 variant='h4'>
-    <Typed strings={["Rukia Assefa"]} 
-    typeSpeed={40}/>
-
-</StyledTypography1>
-<br></br>
-<StyledTypography2 variant='h5'>
-    <Typed strings={["Web Design","Web Developer","MERN Stack"]}
-     typeSpeed={40}
-     backSpeed={60}
-     loop
-     />
-
-</StyledTypography2>
-
-</StyledBox>
-
-
-
-
-</>  
-
-)}
-
-export default Header
+export default Header;
