@@ -271,7 +271,7 @@ function Resume() {
   </StyledTimeLine>
 <StyledTimeLine>
   <YearLabel variant="h2">
-    2020 - 2022
+    2021 - 2022
   </YearLabel>
   <StyledTimeLineItem style={{ float: 'right' }}>
     <StyledSubHeading component="div">
