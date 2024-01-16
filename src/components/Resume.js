@@ -8,6 +8,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 
 const StyledMainContainer = styled(Box)`
   background: #233;
+  padding: 50px;
 `;
 
 
@@ -16,14 +17,14 @@ const YearLabel = styled(Typography)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   width: '30rem',
-  fontSize: '5px',
+  fontSize: '1rem',
   background: 'tomato',
   color: 'white',
   lineHeight: 1,
   padding: 'auto',
   margin: '0 auto',
   position: 'absolute',
-  top: '-2.5rem', // Adjusted position to move the year label up
+  top: '-2rem', // Adjusted position to move the year label up
   left: '50%',
   transform: 'translateX(-50%)',
 
@@ -161,7 +162,24 @@ const StyledTimeLineItem = styled(Box)`
   }
 `;
 
+const EmailLink = styled.a`
+  color: tomato;
+  text-decoration: none;
 
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const GitHubLink = styled.a`
+  color: tomato;
+  text-decoration: none;
+  margin-top: 0.5rem; /* Add space between email and GitHub links */
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 function Resume() {
   const muiTheme = createTheme();
@@ -172,12 +190,15 @@ function Resume() {
       <ThemeProvider theme={muiTheme}>
         <StyledMainContainer component="header">
         <StyledNameContactBox>
-            <Typography variant="h4">Rukia Assefa</Typography>
-            <Typography variant="body1" color="tomato">
-              (703) 981-0361 <br></br>
-              rukassefa@gmail.com
-              </Typography>
-          </StyledNameContactBox>
+        <Typography variant="h5">Rukia Assefa</Typography>
+        <EmailLink href="mailto:rukassefa@gmail.com">
+          rukassefa@gmail.com
+        </EmailLink>
+        <br />
+        <GitHubLink href="https://github.com/rukia-assefa" target="_blank">
+          https://github.com/rukia-assefa
+        </GitHubLink>
+      </StyledNameContactBox>
 
           <Grid container justifyContent="center">
           <Grid item xs={12} sm={8} md={8}>
@@ -224,12 +245,12 @@ function Resume() {
   Professional Experience
 </StyledHeading>
 <StyledTimeLine component="div">
-  <YearLabel variant="h2">
+  <YearLabel variant="h2" >
     2022 - Present
   </YearLabel>
   <StyledTimeLineItem>
     <StyledSubHeading component="div">
-      <Typography variant='h5' align='left'>
+      <Typography variant='h5' align='left' >
         Junior Front End Developer
       </Typography>
       <Typography variant='body1' align='left' style={{ color: "tomato" }}>
@@ -277,4 +298,3 @@ function Resume() {
 }
 
 export default Resume;
-

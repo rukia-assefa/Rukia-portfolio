@@ -1,43 +1,78 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Button,AppBar,Toolbar,ListItem,IconButton,ListItemText,Avatar,Divider,List,Typography,Box, ListItemIcon, Drawer}from '@mui/material'
-import { ArrowBack, Assessment,Home,Apps,ContactMail} from '@mui/icons-material';
-import logo from "../assets/img/logo.png"
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  AppBar,
+  Toolbar,
+  ListItem,
+  IconButton,
+  Avatar,
+  Divider,
+  List,
+  Typography,
+  Box,
+  ListItemIcon,
+  Drawer,
+  ListItemText
+} from '@mui/material';
+import {  Assessment, Home, Apps, ContactMail } from '@mui/icons-material';
+import logo from '../assets/img/logo.png';
 import { styled } from 'styled-components';
 import Footer from './Footer';
+import MenuIcon from '@mui/icons-material/Menu';
+
+
 const StyledBox = styled(Box)`
-  width: 250px;
-  background: #511;
-  height: 100%;
+width: 250px;
+background: #511;
+height: 100%;
 `;
+
+
 const StyledAvatar = styled(Avatar)`
   display: block;
   margin: 0.5rem auto;
-  width: 100px; /* Adjust width as needed */
-  height: 100px; /* Adjust height as needed */
+  width: 100px; 
+  height: 100px; 
+`;
+const ResponsiveListItem = styled(ListItem)`
+  @media (max-width: 700px) {
+    display: flex;
+    
+  }
+`;
+const ResponsiveListItemIcon = styled(ListItemIcon)`
+  @media (max-width: 829px) {
+    display: none;
+    
+  }
 `;
 
-const menuItems =[{
-  listIcon:<Home/>,
-  listText:"Home",
-  listPath: "/"
-},
-{
-  listIcon:<Assessment/>,
-  listText:"Resume",
-  listPath: "/resume"
 
-},{
-  listIcon:<Apps/>,
-  listText:"Projects",
-  listPath: "/projects"
 
-},{
-  listIcon:<ContactMail/>,
-  listText:"Contacts",
-  listPath: "/contact"
-},
-]
+const menuItems = [
+  {
+    listIcon: <Home />,
+    listText: 'Home',
+    listPath: '/'
+  },
+  {
+    listIcon: <Assessment />,
+    listText: 'Resume',
+    listPath: '/resume'
+  },
+  {
+    listIcon: <Apps />,
+    listText: 'Projects',
+    listPath: '/projects'
+  },
+  {
+    listIcon: <ContactMail />,
+    listText: 'Contacts',
+    listPath: '/contact'
+  }
+];
 
 function NavBar() {
   const[state, setState]=useState({
@@ -68,40 +103,61 @@ function NavBar() {
       </List>
     </StyledBox >
   )
+
   return (
     <>
-    
-    <Box component='nav'>
-      <AppBar position='static' style={{background: "#222"}}>
-        <Toolbar>
-          <IconButton onClick={toogleSlider("right", true)}>
-              <ArrowBack style={{color:"tomato"}}/>
-          </IconButton> 
-          <Typography variant='h5' style={{color: "tan"}}>
-            Portfolio
-          </Typography>
-          <Drawer 
-          anchor='right'
-          open={state.right}
-          onClose={toogleSlider("right",false)}
-          >
-            {slideList("right")}
-          </Drawer>
-        </Toolbar>
-      </AppBar>
+      <Box component='nav'>
+        <AppBar component='nav' style={{ background: "#222",  display: 'flex'}}>
+          <Toolbar>
+          <IconButton onClick={toogleSlider("right", true)}>             
+           <MenuIcon style={{ color: "tomato" }} />
+              
+            </IconButton>
+            <Typography
+              variant="h6"
+              sx={{
+                color: 'tomato',
+                display: 'flex',
+                textAlign: 'center',
+                fontWeight: 700,
+                flex: 1 
+              }}
+            >
+              PORTFOLIO
+            </Typography>
 
-    </Box>
-    <Drawer 
-          anchor='right'
-          open={state.right}
-          onClose={toogleSlider("right",false)}
-          >
-            {slideList("right")}
-            <Footer /> 
+            <List sx={{ display: { xs: 'none', sm: 'flex', flexDirection: 'row' } }}>
+              {menuItems.map((Isitem, key) => (
+                <ResponsiveListItem key={key} component={Link} to={Isitem.listPath}>
+                <Button>
+                  <ResponsiveListItemIcon sx={{ color: 'tan' }}>{Isitem.listIcon}</ResponsiveListItemIcon>
+                  <ListItemText primary={Isitem.listText} sx={{ color: 'tan' }} />
+                </Button>
+              </ResponsiveListItem>
+              ))}
+            </List>
 
-     </Drawer>
+            <Drawer
+              anchor='right'
+              open={state.right}
+              onClose={toogleSlider("right", false)}
+            >
+              {slideList("right")}
+            </Drawer>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Drawer
+        anchor='right'
+        open={state.right}
+        onClose={toogleSlider("right", false)}
+      >
+        {slideList("right")}
+        <Footer />
+
+      </Drawer>
     </>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

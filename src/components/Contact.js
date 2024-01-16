@@ -11,7 +11,12 @@ import NavBar from "./NavBar";
 const ContactContainer = styled(Box)`
   background: #233;
   height: 100vh;
+  @media (max-width: 849px) {
+    height: 100vh; // Set height to auto for smaller screens
+    width: auto;
+  }
 `;
+
 
 const Heading = styled(Typography)`
   color: tomato;
@@ -61,7 +66,7 @@ const Contact = () => {
   return (
     <>
     <NavBar/>
-    <ContactContainer component="div">
+    <ContactContainer component="div" >
       <Grid container justifyContent="center">
         <Form component="form">
           <Heading variant="h5"> Contact me...</Heading>
