@@ -8,10 +8,12 @@ const StyledTypography1 = styled(Typography)`
 `;
 
 const StyledAvatar = styled(Avatar)`
-  width: 100px;
-  height: 100px;
+  width: 150px; /* Adjust the width in pixels as needed */
+  height: 150px; /* Adjust the height in pixels as needed */
   margin: 50px;
 `;
+
+
 
 const StyledTypography2 = styled(Typography)`
   color: tan;
@@ -29,7 +31,7 @@ const StyledBox = styled(Box)`
 
 function Header() {
   const [typedText, setTypedText] = useState('');
-  const textArray = ['Web Design', 'Web Developer', 'MERN Stack'];
+  const textArray = ['Web Design', 'Web Developer', 'Full Stack Developer'];
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
@@ -44,10 +46,11 @@ function Header() {
   return (
     <>
       <StyledBox>
+
         <Grid container justify="center">
           <StyledAvatar src={logo} alt="logo" />
         </Grid>
-        <StyledTypography1 variant="h4">{/* Your name or title */}</StyledTypography1>
+        <StyledTypography1 variant="h4"> </StyledTypography1>
         <br />
         <StyledTypography2 variant="h5">{typedText}</StyledTypography2>
       </StyledBox>
