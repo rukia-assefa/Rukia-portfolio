@@ -245,7 +245,7 @@ function Resume() {
   Professional Experience
 </StyledHeading>
 <StyledTimeLine component="div">
-  <YearLabel variant="h2" >
+  <YearLabel variant="h5" >
     2022 - Present
   </YearLabel>
   <StyledTimeLineItem>
@@ -271,7 +271,6 @@ function Resume() {
   </StyledTimeLine>
 <StyledTimeLine>
   <YearLabel variant="h2">
-    2021 - 2022
   </YearLabel>
   <StyledTimeLineItem style={{ float: 'right' }}>
     <StyledSubHeading component="div">
