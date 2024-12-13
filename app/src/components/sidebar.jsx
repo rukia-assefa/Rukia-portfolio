@@ -40,7 +40,7 @@ export default function Sidebar() {
           Full stack developer: React, Node and Mongo
         </h2>
         <p className="mt-4 max-w-xs leading-normal">
-          Authorized to work in the USA/USC
+          Authorized to work in the USA/Citizen 
         </p>
         <p className="mt-4 max-w-xs leading-normal">
           Manassas, VA 20109 Phone: (703) 981-0361
